@@ -1,0 +1,14 @@
+{
+  "name": "ng-trace",
+  "homepage": "https://github.com/zios07/ng-trace",
+  "_release": "dfc7e2db93",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "dfc7e2db935d2e855726af93711107197c4c9ee2"
+  },
+  "_source": "https://github.com/zios07/ng-trace.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/zios07/ng-trace.git",
+  "_direct": true
+}
