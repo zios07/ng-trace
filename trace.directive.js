@@ -1,9 +1,9 @@
 (function() {
   angular.module("trace").directive("trace", TraceDirective);
 
-  TraceDirective.$inject = ["$log", "$http", "$uibModal"];
+  TraceDirective.$inject = ["$log", "$http", "$uibModal", "TraceService"];
 
-  function TraceDirective($log, $http, $uibModal) {
+  function TraceDirective($log, $http, $uibModal, TraceService) {
     var directive = {
       restrict: "E",
       template:
@@ -55,8 +55,8 @@
         }
 
         function loadSnapshots(id) {
-          return $http.get(
-            "http://localhost:8765/sgvapi/audit/demande/" + id + "/history"
+          var URL = TraceService.getURL();
+          return $http.get(URL + "/audit/demande/" + id + "/history"
           );
         }
       }

@@ -1,11 +1,42 @@
-// (function() {
-//   angular.module("trace").service("TraceService", TraceService);
+(function(){
 
-//   TraceService.$inject = ["$log", "$http"];
+    angular.module('trace')
+    .provider('TraceService', TraceServiceProvider);
 
-//   function TraceService($log, $http) {
-//     $log.log("hi");
-//     var service = {};
-//     return service;
-//   }
-// })();
+    function TraceServiceProvider(){    
+
+        var baseUrl = '';
+        var provider = {
+            setBaseUrl : setBaseUrl,
+            getBaseUrl : getBaseUrl,
+            $get: TraceService
+        };
+
+        
+        return provider;
+
+        
+        function setBaseUrl(url){
+            baseUrl = url;
+        }
+
+        function getBaseUrl(){
+            return baseUrl;
+        }
+        
+        function TraceService() {
+            var service = {
+                getURL: getURL
+            };
+
+            return service;
+            
+            function getURL(){
+                return baseUrl;
+            }
+
+        }
+    }
+    
+
+})();
