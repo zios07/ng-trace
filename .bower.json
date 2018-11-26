@@ -3,8 +3,8 @@
   "homepage": "https://github.com/zios07/ng-trace",
   "main": [
     "trace.module.js",
-    "trace.directive.js",
     "trace.service.js",
+    "trace.directive.js",
     "modal.template.html"
   ],
   "authors": [
@@ -24,11 +24,11 @@
     "jquery": "2.1.4",
     "angular-bootstrap": "^2.5.0"
   },
-  "_release": "8910ddbc68",
+  "_release": "749298da44",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "8910ddbc68f6d3831fb214c49069eb10f2f61c42"
+    "commit": "749298da44478a699b1da71f6d79735695a0e525"
   },
   "_source": "https://github.com/zios07/ng-trace.git",
   "_target": "*",

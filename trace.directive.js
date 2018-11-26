@@ -22,22 +22,28 @@
             ariaLabelledBy: "modal-title-top",
             ariaDescribedBy: "modal-body-top",
             template: [
-              '<table class="table table-striped">',
+			'</br> ',
+              '<center> <h1 >Historique de la demande </h1></center>',
+			  	'</br> ',
+				'<div style ="margin-left: 30px;">',
+              '<table style ="width: 94% !important;" class="table table-striped">',
               "<tr>",
-              "<th>Numero de demande</th>",
-              "<th>Statut demande</th>",
-              "<th>Date changement</th>",
+              "<th>ID</th>",
+              "<th>Statut de la demande</th>",
+              "<th>Date de changement</th>",
               "<th>Utilisateur</th>",
-              "<th>Unité organisationnelle</th>",
+              "<th>Org unit</th>",
               "</tr>",
               '<tr ng-repeat="history in data track by $index">',
-              "<td>{{entityId}}</td>",
-              "<td>{{history.snapshot.state.statutActuel}}</td>",
-              "<td>{{history.snapshot.commitMetadata.commitDate | date : 'dd/MM/yyyy HH:mm:ss'}}</td>",
-              "<td>{{history.snapshot.commitMetadata.author}}</td>",
-              "<td>{{history.uorgActuelle}}</td>",
+              "<td><center>{{entityId}}</center></td>",
+              "<td><center>{{history.snapshot.state.statutActuel}}</center></td>",
+              "<td><center>{{history.snapshot.commitMetadata.commitDate | date : 'dd/MM/yyyy HH:mm:ss'}}</center></td>",
+              "<td><center>{{history.snapshot.commitMetadata.author}}</center></td>",
+              "<td><center>{{history.uorgActuelle}}</center></td>",
               "</tr>",
-              "</table>"
+              "</table>",
+			  '</div>',
+			  	'</br> '
             ].join("\n"),
             size: "lg",
             controller: function($scope) {
@@ -55,7 +61,9 @@
         }
 
         function loadSnapshots(id) {
-          return TraceService.getSnapshots(id);
+          var URL = TraceService.getURL();
+          return $http.get(URL + "/audit/demande/" + id + "/history"
+          );
         }
       }
     };
