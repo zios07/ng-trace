@@ -5,6 +5,8 @@
 
     function TraceServiceProvider(){    
 
+        TraceService.$inject = ['$http'];
+
         var baseUrl = '';
         var provider = {
             setBaseUrl : setBaseUrl,
@@ -24,9 +26,11 @@
             return baseUrl;
         }
         
-        function TraceService() {
+        function TraceService($http) {
             var service = {
-                getURL: getURL
+                getURL: getURL,
+                getSnapshots: getSnapshots,
+                searchTrace: searchTrace
             };
 
             return service;
@@ -35,6 +39,13 @@
                 return baseUrl;
             }
 
+            function getSnapshots(id) {
+                return $http.get(baseUrl + "/audit/demande/" + id + "/history");
+            }
+
+            function searchTrace(dto) {
+                return $http.post(baseUrl + "/audit/demande/search", dto);
+            }
         }
     }
     

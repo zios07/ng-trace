@@ -24,11 +24,11 @@
             template: [
               '<table class="table table-striped">',
               "<tr>",
-              "<th>ID demande</th>",
+              "<th>Numero de demande</th>",
               "<th>Statut demande</th>",
               "<th>Date changement</th>",
-              "<th>User</th>",
-              "<th>Org unit</th>",
+              "<th>Utilisateur</th>",
+              "<th>Unité organisationnelle</th>",
               "</tr>",
               '<tr ng-repeat="history in data track by $index">',
               "<td>{{entityId}}</td>",
@@ -55,9 +55,7 @@
         }
 
         function loadSnapshots(id) {
-          var URL = TraceService.getURL();
-          return $http.get(URL + "/audit/demande/" + id + "/history"
-          );
+          return TraceService.getSnapshots(id);
         }
       }
     };
