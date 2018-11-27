@@ -64,6 +64,7 @@
           var URL = TraceService.getURL();
           return $http.get(URL + "/audit/demande/" + id + "/history"
           );
+          return TraceService.getSnapshots(id);
         }
       }
     };
