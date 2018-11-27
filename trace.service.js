@@ -43,8 +43,8 @@
                 return $http.get(baseUrl + "/audit/demande/" + id + "/history");
             }
 
-            function searchTrace(dto) {
-                return $http.post(baseUrl + "/audit/demande/search", dto);
+            function searchTrace(dto, page, size) {
+                return $http.post(baseUrl + "/audit/demande/search?page=" + page + "&size=" + size, dto);
             }
         }
     }

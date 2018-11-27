@@ -22,10 +22,10 @@
             ariaLabelledBy: "modal-title-top",
             ariaDescribedBy: "modal-body-top",
             template: [
-			'</br> ',
-              '<center> <h1 >Historique de la demande </h1></center>',
-			  	'</br> ',
-				'<div style ="margin-left: 30px;">',
+              "</br> ",
+              "<center> <h1 >Historique de la demande </h1></center>",
+              "</br> ",
+              '<div style ="margin-left: 30px;">',
               '<table style ="width: 94% !important;" class="table table-striped">',
               "<tr>",
               "<th>ID</th>",
@@ -42,29 +42,58 @@
               "<td><center>{{history.uorgActuelle}}</center></td>",
               "</tr>",
               "</table>",
-			  '</div>',
-			  	'</br> '
+              "<ul class='pagination'>",
+              "<button class='btn btn-default' ng-click='previous()' ng-disabled='page == 0'>Précédent</button>",
+              "<span class='trace-pagination'>{{page}}</span>",
+              "<button class='btn btn-default' ng-click='next()' ng-disabled='!thereIsMoreTraces'>Suivant</button>",
+              "</ul>",
+              "</div>",
+              "</br> "
             ].join("\n"),
             size: "lg",
             controller: function($scope) {
+              $scope.page = 0;
+              $scope.size = 5;
               $scope.entityId = scope.id;
-              loadSnapshots(scope.id).then(
-                function(resp) {
-                  $scope.data = resp.data;
-                },
-                function(error) {
-                  $log.log(error);
-                }
-              );
+              $scope.next = next;
+              $scope.previous = previous;
+              search();
+              function previous() {
+                $log.log("previous result");
+                $scope.page--;
+                search();
+              }
+
+              function next() {
+                $log.log("next result");
+                $scope.page++;
+                search();
+              }
+
+              function search() {
+                var URL = TraceService.getURL();
+                $http
+                  .get(
+                    URL +
+                      "/audit/demande/" +
+                      scope.id +
+                      "/history?page=" +
+                      $scope.page +
+                      "&size=" +
+                      $scope.size
+                  )
+                  .then(
+                    function(resp) {
+                      $scope.data = resp.data.history;
+                      $scope.thereIsMoreTraces = resp.data.thereIsMore;
+                    },
+                    function(error) {
+                      $log.log(error);
+                    }
+                  );
+              }
             }
           });
-        }
-
-        function loadSnapshots(id) {
-          var URL = TraceService.getURL();
-          return $http.get(URL + "/audit/demande/" + id + "/history"
-          );
-          return TraceService.getSnapshots(id);
         }
       }
     };
