@@ -1,7 +1,7 @@
 {
   "name": "ng-trace",
   "homepage": "https://github.com/zios07/ng-trace",
-  "main": ["trace.module.js", "trace.service.js", "trace.directive.js",  "modal.template.html"],
+  "main": ["trace.module.js", "trace.service.js", "trace.filter.js", "trace.directive.js",  "modal.template.html"],
   "authors": ["zkaoukab"],
   "license": "MIT",
   "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],

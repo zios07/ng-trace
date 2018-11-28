@@ -36,7 +36,7 @@
               "</tr>",
               '<tr ng-repeat="history in data track by $index">',
               "<td><center>{{entityId}}</center></td>",
-              "<td><center>{{history.snapshot.state.statutActuel}}</center></td>",
+              "<td><center>{{history.snapshot.state.statutActuel | format}}</center></td>",
               "<td><center>{{history.snapshot.commitMetadata.commitDate | date : 'dd/MM/yyyy HH:mm:ss'}}</center></td>",
               "<td><center>{{history.snapshot.commitMetadata.author}}</center></td>",
               "<td><center>{{history.uorgActuelle}}</center></td>",
