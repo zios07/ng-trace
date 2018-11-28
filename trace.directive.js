@@ -44,7 +44,7 @@
               "</table>",
               "<ul class='pagination'>",
               "<button class='btn btn-default' ng-click='previous()' ng-disabled='page == 0'>Précédent</button>",
-              "<span class='trace-pagination'>{{page}}</span>",
+              "<span class='trace-pagination'>{{page + 1}}</span>",
               "<button class='btn btn-default' ng-click='next()' ng-disabled='!thereIsMoreTraces'>Suivant</button>",
               "</ul>",
               "</div>",
