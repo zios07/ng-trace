@@ -59,13 +59,11 @@
               $scope.previous = previous;
               search();
               function previous() {
-                $log.log("previous result");
                 $scope.page--;
                 search();
               }
 
               function next() {
-                $log.log("next result");
                 $scope.page++;
                 search();
               }
