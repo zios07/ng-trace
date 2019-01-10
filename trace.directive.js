@@ -7,7 +7,7 @@
     var directive = {
       restrict: "E",
       template:
-        '<button class="history-btn btn btn-default" ng-click="openPopup()">History</button>',
+        '<button class="history-btn btn btn-default" ng-click="openPopup()"></button>',
       scope: {
         className: "=",
         id: "="
@@ -30,9 +30,10 @@
               "<tr>",
               "<th>ID</th>",
               "<th>Statut de la demande</th>",
-              "<th>Date de changement</th>",
+              "<th>date de statut</th>",
               "<th>Utilisateur</th>",
-              "<th>Org unit</th>",
+              "<th>Affectation utilisateur</th>",
+			  "<th>Commentaire</th>",
               "</tr>",
               '<tr ng-repeat="history in data track by $index">',
               "<td><center>{{entityId}}</center></td>",
@@ -40,6 +41,7 @@
               "<td><center>{{history.snapshot.commitMetadata.commitDate | date : 'dd/MM/yyyy HH:mm:ss'}}</center></td>",
               "<td><center>{{history.snapshot.commitMetadata.author}}</center></td>",
               "<td><center>{{history.uorgActuelle}}</center></td>",
+			  "<td><center>{{history.commentaire}}</center></td>",
               "</tr>",
               "</table>",
               "<ul class='pagination'>",
